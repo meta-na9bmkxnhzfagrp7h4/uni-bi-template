@@ -32,7 +32,8 @@ export default defineComponent({
                     nice:true
                 },
                 value: {
-                    nice: true,
+                    min: -50,
+                    max: 200
                 },
             });
 
@@ -49,6 +50,21 @@ export default defineComponent({
                 .position('item*value')
                 .color('type')
                 .label('smooth')
+                .animate({
+                    appear: {
+                        animation: 'fade-in', // 动画名称
+                        easing: 'easeQuadIn', // 动画缓动效果
+                        delay: 100, // 动画延迟执行时间
+                        duration: 600 // 动画执行时间
+                    },
+                    enter: {
+                        animation: 'clipIn', // 动画名称
+                        // easing: 'easeQuadIn', // 动画缓动效果
+                        delay: 100, // 动画延迟执行时间
+                        duration: 600 // 动画执行时间
+                    },
+                })
+                .shape('smooth');
 
             chart
                 .point()
@@ -60,7 +76,7 @@ export default defineComponent({
 
             chart.annotation().line({
                 top: true,
-                start: ['2021/12/15', 0],
+                start: ['2021/12/15', -50],
                 end: ['2021/12/15', 300],
                 style: {
                     stroke: '#595959',
